@@ -20,12 +20,10 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="description: 这是显示在首页的概述，正文内容均会被隐藏">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="笔记柜">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="笔记柜">
-<meta property="og:description" content="description: 这是显示在首页的概述，正文内容均会被隐藏">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Zhangwanchao">
 <meta name="twitter:card" content="summary">
@@ -152,7 +150,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Zhangwanchao">
-      <meta itemprop="description" content="description: 这是显示在首页的概述，正文内容均会被隐藏">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -161,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">PID</a>
+            <a href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">PID基础</a>
         </h2>
 
         <div class="post-meta">
@@ -178,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-01 13:02:20" itemprop="dateModified" datetime="2022-09-01T13:02:20+08:00">2022-09-01</time>
+                <time title="Modified: 2023-03-08 10:41:18" itemprop="dateModified" datetime="2023-03-08T10:41:18+08:00">2023-03-08</time>
               </span>
 
           
@@ -192,26 +190,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://latex.codecogs.com/eqneditor/editor.php">https://latex.codecogs.com/eqneditor/editor.php</a></p>
-<h1 id="PID控制器基本表达形式"><a href="#PID控制器基本表达形式" class="headerlink" title="PID控制器基本表达形式"></a>PID控制器基本表达形式</h1><p>PID控制器实际上是基于误差的一种控制方式，<br>在时域上的表达式为：<br>$$ u(t)&#x3D;K_p[e(t)+\frac{1}{T_1}\int ^t_0 e(t) {\rm d}t+T_d\dot{e(t)}]\tag{1} $$<br>在S域上的表达式：（传递函数形式），理论分析的时候会用到<br>$$ G(s)&#x3D;\frac{U(s)}{E(s)}&#x3D;K_p(1+\frac{1}{T_1s}+T_ds)\tag{2}$$</p>
-<h2 id="位置式PID"><a href="#位置式PID" class="headerlink" title="位置式PID"></a>位置式PID</h2><p>目前实际应用都要将算法转换为数字形式：<br>一般转换方法两种：位置式和增量式，各有优劣<br>位置式PID表达形式：<br>设置”<br>采样周期：T,采样序号：k，得到真实时间:t&#x3D;kT<br>位置式PID对比例项没有影响，主要是要对积分和微分项进行处理<br>误差对时间的积分：这里用矩形法进行数值积分，一阶向后差分进行数值微分近似：<br>$$ \int ^t_0 e(t) {\rm d}t \approx T\sum_{j&#x3D;1}^{k}e(jT)   \tag{3} $$<br>$$ \dot{e(t)}\approx\frac{e(kT)-e((k-1)T)}{T}   \tag{4} $$</p>
-<p>离散PID控制器用在连续被控对象模型的demo程序</p>
-<p>被控对象表示为传递函数形式：<br>$$ G(s)&#x3D;\frac{1}{Js^2+Bs}$$<br>这里将传递函数转换成微分方程的形式，再用ode45的方法进行数值求解。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">%Discrete PID control for continuous plant</span><br><span class="line">clear all;close all;clc;</span><br><span class="line">ts=0.01;  % T</span><br><span class="line">xk=zeros(2,1);</span><br><span class="line">e_1=0;% 初始误差</span><br><span class="line">u_1=0;% 初始控制量</span><br><span class="line"></span><br><span class="line">for k=1:1:120 % 采样序号</span><br><span class="line">    time(k) = k*ts;%真实时间</span><br><span class="line">    yd(k)=0.50*sin(1*2*pi*k*ts);%目标指令</span><br><span class="line">    para=u_1;</span><br><span class="line">    tSpan=[0 ts];%设定在一个时间步内进行模型求解</span><br><span class="line">    [tt,xx]=ode45(@(t,y,para) PlantModel(t,y,para),tSpan,xk,[],para);</span><br><span class="line">    xk = xx(length(xx),:);</span><br><span class="line">    y(k)=xk(1);</span><br><span class="line">    e(k)=yd(k)-y(k);% 当前采样时刻误差</span><br><span class="line">    de(k)=(e(k)-e_1)/ts;%一阶向后差分计算近似微分</span><br><span class="line">    Kp=20.0; Kd=0.5;%设计控制器参数</span><br><span class="line">    u(k)=Kp*e(k)+Kd*de(k);% 采用PD控制</span><br><span class="line">    %控制量限幅|u|&lt;10</span><br><span class="line">    if u(k)&gt;10.0</span><br><span class="line">        u(k)=10.0;</span><br><span class="line">    end</span><br><span class="line">    if u(k)&lt;-10.0</span><br><span class="line">        u(k)=-10.0;</span><br><span class="line">    end</span><br><span class="line">    u_1=u(k);</span><br><span class="line">    e_1=e(k);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function dy = PlantModel(t,y,para)</span><br><span class="line">u=para;</span><br><span class="line">J=0.0067;B=0.1;</span><br><span class="line"></span><br><span class="line">dy=zeros(2,1);</span><br><span class="line">dy(1) = y(2);</span><br><span class="line">dy(2) = -(B/J)*y(2) + (1/J)*u;</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/pid_weizhishi.jpg" alt="PID方法小结"></p>
-<p>位置式PID采用全量输出，每次的输出与过去的状态均有关，容易产生大幅变化，改进后用增量式PID</p>
-<h2 id="增量式PID："><a href="#增量式PID：" class="headerlink" title="增量式PID："></a>增量式PID：</h2><p>基本原理是得到控制量的增量而不是控制量的绝对值。<br>$$ u(k)&#x3D;u(k-1)+\Delta u(k) \tag{5}$$<br> 推导方式为递推方式：<br>$$ u(k)&#x3D;K_pe(k)+K_pT\sum_{j&#x3D;1}^{k}e(j)+\frac{K_p}{T}(e(k)-e((k-1))   \tag{6} $$<br>$$ u(k-1)&#x3D;K_pe(k-1)+K_pT\sum_{j&#x3D;1}^{k-1}e(j)+\frac{K_p}{T}(e(k-1)-e((k-2))   \tag{7} $$</p>
-<p>将（6）-（7）得到：<br>$$  \Delta u(k)&#x3D; \textcolor{blue}{K_p}[e(k)-e(k-1)]+\textcolor{red}{K_pT}e(k)+ \textcolor{green}{\frac{K_p}{T}}[e(k)-2e(k-1)+e(k-2)] \tag{8}$$</p>
-<h1 id="积分改进型PID"><a href="#积分改进型PID" class="headerlink" title="积分改进型PID"></a>积分改进型PID</h1><h2 id="积分分离"><a href="#积分分离" class="headerlink" title="积分分离"></a>积分分离</h2><p>基本原理：误差较大时，取消积分作用，当误差较小时引入积分作用。<br>表示式：在积分项前面加上调节系数,设置调节阈值<br>$$ u(k)&#x3D;K_pe(k)+ \textcolor{red}{\beta} K_i\sum_{j&#x3D;1}^{k}e(j)+K_d[e(k)-e((k-1)]   \tag{8} $$</p>
-<p>$$ \beta&#x3D; 1 , |e(k)| \leqslant \epsilon \  , 0 , |e(k)|&gt; \epsilon  $$</p>
-<h2 id="抗积分饱和"><a href="#抗积分饱和" class="headerlink" title="抗积分饱和"></a>抗积分饱和</h2><p> 当积分器累加很大导致执行器饱和，积分器持续累加，越难退出饱和区，导致系统失去控制能力。<br> 方法：判断上一时刻的控制量 ： u(k-1) 是否超出最大限制，如果超过了最大的限制，那么正向的积分累加停止，只累加负向的积分，同理用在相反方向，这样可以使系统快速退出积分饱和区，不至于在饱和区停留太久，导致系统失去控制能力时间太久。</p>
-<h2 id="梯形积分"><a href="#梯形积分" class="headerlink" title="梯形积分"></a>梯形积分</h2><p>提高数值积分的精度，矩形法改为精度高一点的梯形积分法。<br>$$ \int ^t_0 e(t) {\rm d}t \approx T\sum_{i&#x3D;1}^{k}\frac{e(i)-e(i-1)}{2} \tag{9} $$</p>
-<h2 id="变速积分"><a href="#变速积分" class="headerlink" title="变速积分"></a>变速积分</h2><p>常规的积分系数是不变的，为了提高积分的效率，根据系统的偏差大小来改变积分的速度。</p>
-<h1 id="微分改进型PID"><a href="#微分改进型PID" class="headerlink" title="微分改进型PID"></a>微分改进型PID</h1><h2 id="低通滤波器"><a href="#低通滤波器" class="headerlink" title="低通滤波器"></a>低通滤波器</h2><h2 id="不完全微分"><a href="#不完全微分" class="headerlink" title="不完全微分"></a>不完全微分</h2><h2 id="微分先行"><a href="#微分先行" class="headerlink" title="微分先行"></a>微分先行</h2><h1 id="带Kalman滤波器的PID控制器"><a href="#带Kalman滤波器的PID控制器" class="headerlink" title="带Kalman滤波器的PID控制器"></a>带Kalman滤波器的PID控制器</h1><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="带死区的情况"><a href="#带死区的情况" class="headerlink" title="带死区的情况"></a>带死区的情况</h2><h2 id="带前馈补偿的情况"><a href="#带前馈补偿的情况" class="headerlink" title="带前馈补偿的情况"></a>带前馈补偿的情况</h2><h1 id="PID参数整定"><a href="#PID参数整定" class="headerlink" title="PID参数整定"></a>PID参数整定</h1><h1 id="PID频域分析"><a href="#PID频域分析" class="headerlink" title="PID频域分析"></a>PID频域分析</h1><p>从调整系统闭环频率特性的角度来看PID控制器对于系统的作用。</p>
-<p>PID控制器是一种超前-滞后校正装置。</p>
-<p>PI控制作用发生在低频段(稳态特性)。<br>PD控制作用发生在高频段(动态特性)。<br>PID控制可以改善动态特性同时改善稳态特性。</p>
-<h1 id="神经网络PID"><a href="#神经网络PID" class="headerlink" title="神经网络PID"></a>神经网络PID</h1>
+          <p>PID基础原理和应用</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -285,7 +272,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Zhangwanchao</p>
-  <div class="site-description" itemprop="description">description: 这是显示在首页的概述，正文内容均会被隐藏</div>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -380,6 +367,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
