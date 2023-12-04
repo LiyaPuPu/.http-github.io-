@@ -176,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-09 14:51:41" itemprop="dateModified" datetime="2023-03-09T14:51:41+08:00">2023-03-09</time>
+                <time title="Modified: 2023-05-11 09:57:00" itemprop="dateModified" datetime="2023-05-11T09:57:00+08:00">2023-05-11</time>
               </span>
 
           
@@ -285,6 +285,80 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhangwanchao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记柜">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">模型预测控制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-25 14:18:51" itemprop="dateCreated datePublished" datetime="2022-06-25T14:18:51+08:00">2022-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-30 23:29:52" itemprop="dateModified" datetime="2022-06-30T23:29:52+08:00">2022-06-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="模型预测控制"><a href="#模型预测控制" class="headerlink" title="模型预测控制"></a>模型预测控制</h2><p><a target="_blank" rel="noopener" href="https://baidu.com/">Baidu</a></p>
+<p><image
+  src="https://images.pexels.com/photos/10585990/pexels-photo-10585990.jpeg"
+  width="100"
+/></p>
+<h2 id="预测状态矩阵推导"><a href="#预测状态矩阵推导" class="headerlink" title="预测状态矩阵推导"></a>预测状态矩阵推导</h2><p>需要通过状态空间方程求出预测时域内的所有状态量：<br>$$ x(k+1)&#x3D;Ax(k)+Bu(k) $$</p>
+<p>通过递归的方式求出预测时域内的所有变量：假设当前时刻为k：</p>
+<p>$x(k+1|k)&#x3D;Ax(k)+Bu(k)$<br>$$x(k+2|k)&#x3D;Ax(k+1|k)+Bu(k+1)&#x3D;A(Ax(k)+Bu(k))+Bu(k+1)&#x3D;A^2x(k)+ABu(k)+Bu(k+1)$$<br>$x(k+3|k)&#x3D;Ax(k+2|k)+Bu(k+2)&#x3D;A^3x(k)+A^2Bu(k)+ABu(k+1)+Bu(k+2)$<br>$$…$$<br>$x(k+Np|k)&#x3D;A^{Np}x(k)+\sum_{i&#x3D;1}^{Np-1}A^{Np-1-i}Bu(k+i|k)$</p>
+<p>定义预测时域内的控制序列为：代表在k时刻到k+Np时刻的控制量序列：<br>$$U_k&#x3D;[u(k|k),u(k+1|k),u(k+2|k),…,u(k+Np-1)|k)]^T$$<br>$$X_k&#x3D;[x(k+1|k),x(k+2|k),x(k+3|k),…,x(k+Np)|k)]^T$$</p>
+<p>将状态预测表示为矩阵形式：<br>$$X_k&#x3D;\begin{bmatrix}A \ A^2 \：\A^{Np} \end{bmatrix}x(k)+\begin{bmatrix}         B        &amp;   …     &amp;  0  &amp;  0 \<br>                 A^1B      &amp;    B      &amp; … &amp;   0\<br>                  …      &amp;   …     &amp; … &amp;  … \<br>                 A^{Np-1}B &amp; A^{Np-2}B &amp; … &amp;  B   \end{bmatrix}U_k$$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
 
@@ -351,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
