@@ -1,103 +1,158 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>PID基础20231204 | 笔记柜</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="PID基础原理和应用">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PID基础20231204 | 笔记柜</title><meta name="author" content="Zhangwanchao"><meta name="copyright" content="Zhangwanchao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PID基础原理和应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PID基础20231204">
 <meta property="og:url" content="http://example.com/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/index.html">
 <meta property="og:site_name" content="笔记柜">
 <meta property="og:description" content="PID基础原理和应用">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/pid_weizhishi.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2022-06-25T06:18:51.000Z">
 <meta property="article:modified_time" content="2023-12-04T07:59:46.955Z">
 <meta property="article:author" content="Zhangwanchao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/pid_weizhishi.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="笔记柜" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">笔记柜</a>
-      </h1>
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PID基础20231204',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-04 15:59:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-PID方法小结 - 20231204" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/" class="article-date">
-  <time class="dt-published" datetime="2022-06-25T06:18:51.000Z" itemprop="datePublished">2022-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      PID基础20231204
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
-        <p>latex写作参考<br><a target="_blank" rel="noopener" href="https://latex.codecogs.com/eqneditor/editor.php">https://latex.codecogs.com/eqneditor/editor.php</a></p>
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="笔记柜"><span class="site-name">笔记柜</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PID基础20231204</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-06-25T06:18:51.000Z" title="Created 2022-06-25 14:18:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-12-04T07:59:46.955Z" title="Updated 2023-12-04 15:59:46">2023-12-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PID基础20231204"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>latex写作参考<br><a target="_blank" rel="noopener" href="https://latex.codecogs.com/eqneditor/editor.php">https://latex.codecogs.com/eqneditor/editor.php</a></p>
 <h1 id="PID控制器基本表达形式"><a href="#PID控制器基本表达形式" class="headerlink" title="PID控制器基本表达形式"></a>PID控制器基本表达形式</h1><p>PID控制器实际上是基于误差的一种控制方式，<br>在时域上的表达式为：<br>$$ u(t)&#x3D;K_p[e(t)+\frac{1}{T_1}\int ^t_0 e(t) {\rm d}t+T_d\dot{e(t)}]\tag{1} $$<br>在S域上的表达式：（传递函数形式），理论分析的时候会用到<br>$$ G(s)&#x3D;\frac{U(s)}{E(s)}&#x3D;K_p(1+\frac{1}{T_1s}+T_ds)\tag{2}$$</p>
 <h2 id="位置式PID"><a href="#位置式PID" class="headerlink" title="位置式PID"></a>位置式PID</h2><p>目前实际应用都要将算法转换为数字形式：<br>一般转换方法两种：位置式和增量式，各有优劣<br>位置式PID表达形式：<br>设置”<br>采样周期：T,采样序号：k，得到真实时间:t&#x3D;kT<br>位置式PID对比例项没有影响，主要是要对积分和微分项进行处理<br>误差对时间的积分：这里用矩形法进行数值积分，一阶向后差分进行数值微分近似：<br>$$ \int ^t_0 e(t) {\rm d}t \approx T\sum_{j&#x3D;1}^{k}e(jT)   \tag{3} $$<br>$$ \dot{e(t)}\approx\frac{e(kT)-e((k-1)T)}{T}   \tag{4} $$</p>
 <p>离散PID控制器用在连续被控对象模型的demo程序</p>
@@ -116,155 +171,4 @@
 <h1 id="微分改进型PID"><a href="#微分改进型PID" class="headerlink" title="微分改进型PID"></a>微分改进型PID</h1><h2 id="低通滤波器"><a href="#低通滤波器" class="headerlink" title="低通滤波器"></a>低通滤波器</h2><h2 id="不完全微分"><a href="#不完全微分" class="headerlink" title="不完全微分"></a>不完全微分</h2><h2 id="微分先行"><a href="#微分先行" class="headerlink" title="微分先行"></a>微分先行</h2><h1 id="带Kalman滤波器的PID控制器"><a href="#带Kalman滤波器的PID控制器" class="headerlink" title="带Kalman滤波器的PID控制器"></a>带Kalman滤波器的PID控制器</h1><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="带死区的情况"><a href="#带死区的情况" class="headerlink" title="带死区的情况"></a>带死区的情况</h2><h2 id="带前馈补偿的情况"><a href="#带前馈补偿的情况" class="headerlink" title="带前馈补偿的情况"></a>带前馈补偿的情况</h2><h1 id="PID参数整定"><a href="#PID参数整定" class="headerlink" title="PID参数整定"></a>PID参数整定</h1><h1 id="PID频域分析"><a href="#PID频域分析" class="headerlink" title="PID频域分析"></a>PID频域分析</h1><p>从调整系统闭环频率特性的角度来看PID控制器对于系统的作用。</p>
 <p>PID控制器是一种超前-滞后校正装置。</p>
 <p>PI控制作用发生在低频段(稳态特性)。<br>PD控制作用发生在高频段(动态特性)。<br>PID控制可以改善动态特性同时改善稳态特性。</p>
-<h1 id="神经网络PID"><a href="#神经网络PID" class="headerlink" title="神经网络PID"></a>神经网络PID</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/" data-id="clpqme4ey0000ww0p7vzq12dh" data-title="PID基础20231204" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          模型预测控制
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E6%8E%A7%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" rel="tag">自控基础原理</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E8%87%AA%E6%8E%A7%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" style="font-size: 10px;">自控基础原理</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/08/%E8%87%AA%E6%8E%A7%E5%8E%9F%E7%90%86-%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90%E4%BA%8E%E6%A0%A1%E6%AD%A3/">自控原理之频域分析与校正</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/">PID基础</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/">模型预测控制</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/">PID基础20231204</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 Zhangwanchao<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
-</html>
+<h1 id="神经网络PID"><a href="#神经网络PID" class="headerlink" title="神经网络PID"></a>神经网络PID</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">Zhangwanchao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/">http://example.com/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/" title="模型预测控制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">模型预测控制</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhangwanchao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PID%E6%8E%A7%E5%88%B6%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%A1%A8%E8%BE%BE%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">PID控制器基本表达形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E5%BC%8FPID"><span class="toc-number">1.1.</span> <span class="toc-text">位置式PID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E5%BC%8FPID%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">增量式PID：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%AF%E5%88%86%E6%94%B9%E8%BF%9B%E5%9E%8BPID"><span class="toc-number">2.</span> <span class="toc-text">积分改进型PID</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%AF%E5%88%86%E5%88%86%E7%A6%BB"><span class="toc-number">2.1.</span> <span class="toc-text">积分分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%97%E7%A7%AF%E5%88%86%E9%A5%B1%E5%92%8C"><span class="toc-number">2.2.</span> <span class="toc-text">抗积分饱和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BD%A2%E7%A7%AF%E5%88%86"><span class="toc-number">2.3.</span> <span class="toc-text">梯形积分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%80%9F%E7%A7%AF%E5%88%86"><span class="toc-number">2.4.</span> <span class="toc-text">变速积分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E6%94%B9%E8%BF%9B%E5%9E%8BPID"><span class="toc-number">3.</span> <span class="toc-text">微分改进型PID</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">低通滤波器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%BE%AE%E5%88%86"><span class="toc-number">3.2.</span> <span class="toc-text">不完全微分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E5%85%88%E8%A1%8C"><span class="toc-number">3.3.</span> <span class="toc-text">微分先行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%A6Kalman%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84PID%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">带Kalman滤波器的PID控制器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">5.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E6%AD%BB%E5%8C%BA%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">5.1.</span> <span class="toc-text">带死区的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E5%89%8D%E9%A6%88%E8%A1%A5%E5%81%BF%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">5.2.</span> <span class="toc-text">带前馈补偿的情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PID%E5%8F%82%E6%95%B0%E6%95%B4%E5%AE%9A"><span class="toc-number">6.</span> <span class="toc-text">PID参数整定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PID%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90"><span class="toc-number">7.</span> <span class="toc-text">PID频域分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CPID"><span class="toc-number">8.</span> <span class="toc-text">神经网络PID</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/03/08/%E8%87%AA%E6%8E%A7%E5%8E%9F%E7%90%86-%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90%E4%BA%8E%E6%A0%A1%E6%AD%A3/" title="自控原理之频域分析与校正">自控原理之频域分析与校正</a><time datetime="2023-03-07T16:00:00.000Z" title="Created 2023-03-08 00:00:00">2023-03-08</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93/" title="PID基础">PID基础</a><time datetime="2022-06-25T06:18:51.000Z" title="Created 2022-06-25 14:18:51">2022-06-25</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/06/25/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E7%BB%93/" title="模型预测控制">模型预测控制</a><time datetime="2022-06-25T06:18:51.000Z" title="Created 2022-06-25 14:18:51">2022-06-25</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/06/25/PID%E6%96%B9%E6%B3%95%E5%B0%8F%E7%BB%93%20-%2020231204/" title="PID基础20231204">PID基础20231204</a><time datetime="2022-06-25T06:18:51.000Z" title="Created 2022-06-25 14:18:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Zhangwanchao</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
